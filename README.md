@@ -66,7 +66,7 @@ We adopted the **Design Thinking Process** to create a user-centric solution:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/agri-app.git
+   git clone https://github.com/heytabrej/AgriConnect.git
    cd agri-app
    ```
 
