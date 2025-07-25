@@ -189,4 +189,4 @@ const LoanApplicationForm = ({ bankId, loanId, loanDetails }) => {
   );
 };
 
-export default LoanApplicationForm; 
+export default LoanApplicationForm;
