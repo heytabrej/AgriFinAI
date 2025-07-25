@@ -2,7 +2,7 @@ export const banks = [
   {
     id: 1,
     name: "SBI Kisan Credit",
-    logo: '/bank-logos/sbi.png',
+    logo: 'https://wordzz.com/wp-content/uploads/2016/10/sbi.jpg',
     description: "Government-backed agricultural loans with PM-KISAN subsidies",
     minInterest: 4,
     maxInterest: 9,
@@ -32,7 +32,7 @@ export const banks = [
   {
     id: 2,
     name: "NABARD Rural Boost",
-    logo: '/bank-logos/nabard.png',
+    logo: 'https://www.ux4g.gov.in/assets/img/uxdt-logo/NABARD-Preview.png',
     description: "Long-term financing for agricultural development",
     minInterest: 3.5,
     maxInterest: 8,
@@ -53,7 +53,7 @@ export const banks = [
   {
     id: 3,
     name: "HDFC Agri Growth",
-    logo: '/bank-logos/hdfc.png',
+    logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSquouX3qJzp6uZwleCOtTBppHfDKlN6vDHg&s',
     description: "Quick digital loans for progressive farmers",
     minInterest: 8.5,
     maxInterest: 12.5,
@@ -74,7 +74,7 @@ export const banks = [
   {
     id: 4,
     name: "ICICI Krishi Suraksha",
-    logo: '/bank-logos/icici.png',
+    logo: 'https://static.vecteezy.com/system/resources/previews/020/336/263/non_2x/icici-logo-icici-icon-free-free-vector.jpg',
     description: "Comprehensive farm protection loans",
     minInterest: 7.9,
     maxInterest: 11.5,
@@ -95,7 +95,7 @@ export const banks = [
   {
     id: 5,
     name: "Axis Farm Solutions",
-    logo: '/bank-logos/axis.png',
+    logo: 'https://i.pinimg.com/736x/c2/ce/15/c2ce15a98bfd986916476d5bc5610eb0.jpg',
     description: "End-to-end agricultural financing",
     minInterest: 8.2,
     maxInterest: 12,
@@ -116,7 +116,7 @@ export const banks = [
   {
     id: 6,
     name: "Bandhan Microfinance",
-    logo: '/bank-logos/bandhan.png',
+    logo: 'https://i.pinimg.com/736x/9a/b4/f2/9ab4f2ffacecc3b687b3bdd4eb337772.jpg',
     description: "Group lending for small farmers",
     minInterest: 10,
     maxInterest: 14,
@@ -137,7 +137,7 @@ export const banks = [
   {
     id: 7,
     name: "Punjab National Bank",
-    logo: '/bank-logos/pnb.png',
+    logo: 'https://upload.wikimedia.org/wikipedia/commons/3/3b/PNB_logo.svg',
     description: "Subsidized loans under government schemes",
     minInterest: 4.5,
     maxInterest: 9.5,
@@ -158,7 +158,7 @@ export const banks = [
   {
     id: 8,
     name: "Bharat Microfinance",
-    logo: '/bank-logos/bharat-mfi.png',
+    logo: 'https://www.bharatfinancial.com/images/logo.png',
     description: "Digital-first loans for rural entrepreneurs",
     minInterest: 9,
     maxInterest: 13,
@@ -176,4 +176,4 @@ export const banks = [
       }
     ]
   }
-]; 
+];

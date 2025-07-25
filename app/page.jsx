@@ -1,243 +1,34 @@
 "use client";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Link from 'next/link';
 import { FiPhone, FiChevronRight, FiMapPin, FiShoppingBag, FiSun, FiDroplet, FiNavigation, FiX, FiSearch } from 'react-icons/fi';
-import Image from 'next/image';
 import ProductImage from '../components/ProductImage';
+import { foodItems } from '../assets/assets';
 
 const LandingPage = () => {
-  const [userLocation, setUserLocation] = useState(null);
   const [locationError, setLocationError] = useState('');
   const [isLocating, setIsLocating] = useState(false);
   const [detectedArea, setDetectedArea] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
-  const [filteredProducts, setFilteredProducts] = useState([
-    {
-      id: 1,
-      name: 'Organic Tomatoes',
-      grade: 'Grade AA',
-      quantity: '500 kg',
-      location: 'Maharashtra',
-      contact: '+91 98765 43210',
-      image: 'https://images.unsplash.com/photo-1582284540020-8acbe03f4924?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Fresh organic tomatoes grown with natural fertilizers, perfect for salads and cooking'
-    },
-    {
-      id: 2,
-      name: 'Premium Potatoes',
-      grade: 'Grade A',
-      quantity: '1200 kg',
-      location: 'Punjab',
-      contact: '+91 98765 43211',
-      image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba654?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'High-quality potatoes with low moisture content, ideal for frying and baking'
-    },
-    {
-      id: 3,
-      name: 'Fresh Spinach',
-      grade: 'Grade AAA',
-      quantity: '300 kg',
-      location: 'Karnataka',
-      contact: '+91 98765 43212',
-      image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Tender spinach leaves packed with nutrients, harvested daily'
-    },
-    {
-      id: 4,
-      name: 'Carrots',
-      grade: 'Grade AA',
-      quantity: '800 kg',
-      location: 'Uttar Pradesh',
-      contact: '+91 98765 43213',
-      image: 'https://images.unsplash.com/photo-1447175008436-054170c2e979?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Sweet and crunchy carrots rich in beta-carotene'
-    },
-    {
-      id: 5,
-      name: 'Cauliflower',
-      grade: 'Grade A',
-      quantity: '600 kg',
-      location: 'Gujarat',
-      contact: '+91 98765 43214',
-      image: 'https://images.unsplash.com/photo-159428817964-5d1467f493e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Fresh white cauliflower heads, pesticide-free'
-    },
-    {
-      id: 6,
-      name: 'Brinjal',
-      grade: 'Grade AA',
-      quantity: '400 kg',
-      location: 'Tamil Nadu',
-      contact: '+91 98765 43215',
-      image: 'https://images.unsplash.com/photo-1594287389-0a81a734b5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Purple brinjals with firm texture, perfect for curries'
-    },
-    {
-      id: 7,
-      name: 'Capsicum',
-      grade: 'Grade AAA',
-      quantity: '350 kg',
-      location: 'Haryana',
-      contact: '+91 98765 43216',
-      image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Colorful capsicums available in red, yellow, and green varieties'
-    },
-    {
-      id: 8,
-      name: 'Okra',
-      grade: 'Grade A',
-      quantity: '450 kg',
-      location: 'Rajasthan',
-      contact: '+91 98765 43217',
-      image: 'https://images.unsplash.com/photo-1602848592593-95c5a09a00d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Tender okra with minimal fiber content'
-    },
-    {
-      id: 9,
-      name: 'Cabbage',
-      grade: 'Grade AA',
-      quantity: '700 kg',
-      location: 'West Bengal',
-      contact: '+91 98765 43218',
-      image: 'https://images.unsplash.com/photo-1572357015441-81e1eb8e98c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Compact cabbage heads with crisp leaves'
-    },
-    {
-      id: 10,
-      name: 'Green Beans',
-      grade: 'Grade AAA',
-      quantity: '250 kg',
-      location: 'Kerala',
-      contact: '+91 98765 43219',
-      image: 'https://images.unsplash.com/photo-1592614521197-ff0b46cda57c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Tender green beans with high nutritional value'
-    }
-  ]);
-
-  const products = [
-    {
-      id: 1,
-      name: 'Organic Tomatoes',
-      grade: 'Grade AA',
-      quantity: '500 kg',
-      location: 'Maharashtra',
-      contact: '+91 98765 43210',
-      image: 'https://images.unsplash.com/photo-1582284540020-8acbe03f4924?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Fresh organic tomatoes grown with natural fertilizers, perfect for salads and cooking'
-    },
-    {
-      id: 2,
-      name: 'Premium Potatoes',
-      grade: 'Grade A',
-      quantity: '1200 kg',
-      location: 'Punjab',
-      contact: '+91 98765 43211',
-      image: 'https://images.unsplash.com/photo-1518977676601-b53f82aba654?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'High-quality potatoes with low moisture content, ideal for frying and baking'
-    },
-    {
-      id: 3,
-      name: 'Fresh Spinach',
-      grade: 'Grade AAA',
-      quantity: '300 kg',
-      location: 'Karnataka',
-      contact: '+91 98765 43212',
-      image: 'https://images.unsplash.com/photo-1576045057995-568f588f82fb?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Tender spinach leaves packed with nutrients, harvested daily'
-    },
-    {
-      id: 4,
-      name: 'Carrots',
-      grade: 'Grade AA',
-      quantity: '800 kg',
-      location: 'Uttar Pradesh',
-      contact: '+91 98765 43213',
-      image: 'https://images.unsplash.com/photo-1447175008436-054170c2e979?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Sweet and crunchy carrots rich in beta-carotene'
-    },
-    {
-      id: 5,
-      name: 'Cauliflower',
-      grade: 'Grade A',
-      quantity: '600 kg',
-      location: 'Gujarat',
-      contact: '+91 98765 43214',
-      image: 'https://images.unsplash.com/photo-159428817964-5d1467f493e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Fresh white cauliflower heads, pesticide-free'
-    },
-    {
-      id: 6,
-      name: 'Brinjal',
-      grade: 'Grade AA',
-      quantity: '400 kg',
-      location: 'Tamil Nadu',
-      contact: '+91 98765 43215',
-      image: 'https://images.unsplash.com/photo-1594287389-0a81a734b5a1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Purple brinjals with firm texture, perfect for curries'
-    },
-    {
-      id: 7,
-      name: 'Capsicum',
-      grade: 'Grade AAA',
-      quantity: '350 kg',
-      location: 'Haryana',
-      contact: '+91 98765 43216',
-      image: 'https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Colorful capsicums available in red, yellow, and green varieties'
-    },
-    {
-      id: 8,
-      name: 'Okra',
-      grade: 'Grade A',
-      quantity: '450 kg',
-      location: 'Rajasthan',
-      contact: '+91 98765 43217',
-      image: 'https://images.unsplash.com/photo-1602848592593-95c5a09a00d0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Tender okra with minimal fiber content'
-    },
-    {
-      id: 9,
-      name: 'Cabbage',
-      grade: 'Grade AA',
-      quantity: '700 kg',
-      location: 'West Bengal',
-      contact: '+91 98765 43218',
-      image: 'https://images.unsplash.com/photo-1572357015441-81e1eb8e98c3?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Compact cabbage heads with crisp leaves'
-    },
-    {
-      id: 10,
-      name: 'Green Beans',
-      grade: 'Grade AAA',
-      quantity: '250 kg',
-      location: 'Kerala',
-      contact: '+91 98765 43219',
-      image: 'https://images.unsplash.com/photo-1592614521197-ff0b46cda57c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&h=600&q=80',
-      description: 'Tender green beans with high nutritional value'
-    }
-  ];
+  const [filteredProducts, setFilteredProducts] = useState(foodItems);
 
   // Get user's location
   const getLocation = () => {
     setIsLocating(true);
     setLocationError('');
-    
     if (!navigator.geolocation) {
       setLocationError('Geolocation is not supported by your browser');
       setIsLocating(false);
       return;
     }
-
     navigator.geolocation.getCurrentPosition(
       async (position) => {
         try {
           const { latitude, longitude } = position.coords;
-          // Reverse geocoding to get city/state
           const response = await fetch(
             `https://api.openweathermap.org/geo/1.0/reverse?lat=${latitude}&lon=${longitude}&limit=1&appid=${process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY}`
           );
           const data = await response.json();
-          
           if (data.length > 0) {
             const area = data[0].state || data[0].name;
             setDetectedArea(area);
@@ -257,8 +48,8 @@ const LandingPage = () => {
 
   // Filter products by location
   const filterProductsByLocation = (area) => {
-    const filtered = products.filter(product => 
-      product.location.toLowerCase().includes(area.toLowerCase())
+    const filtered = foodItems.filter(product =>
+      product.origin && product.origin.toLowerCase().includes(area.toLowerCase())
     );
     setFilteredProducts(filtered);
   };
@@ -270,15 +61,10 @@ const LandingPage = () => {
     }
   };
 
-  // Add clear filters function
   const clearFilters = () => {
-    setFilteredProducts(products);
+    setFilteredProducts(foodItems);
     setDetectedArea('');
     setSearchQuery('');
-  };
-
-  const handleImageError = (e) => {
-    e.target.src = '/fallback-product.jpg'; // Create this image in public folder
   };
 
   return (
@@ -360,8 +146,6 @@ const LandingPage = () => {
               <p className="text-xl text-gray-600 mb-8">
                 Discover fresh produce straight from local farms
               </p>
-              
-              {/* Location Search Integration */}
               <div className="max-w-2xl mx-auto">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="flex-1 relative">
@@ -392,7 +176,6 @@ const LandingPage = () => {
                     </button>
                   </div>
                 </div>
-                
                 {detectedArea && (
                   <div className="mt-4 text-green-700 flex items-center justify-center gap-2">
                     <FiMapPin className="w-5 h-5" />
@@ -425,7 +208,6 @@ const LandingPage = () => {
                 </button>
               )}
             </div>
-            
             {filteredProducts.length === 0 ? (
               <div className="text-center py-12">
                 <div className="text-gray-500 mb-4">No products found in {detectedArea}</div>
@@ -449,15 +231,15 @@ const LandingPage = () => {
                       <div className="space-y-2 text-gray-600">
                         <div className="flex items-center gap-2">
                           <FiSun className="text-green-600" />
-                          <span>{product.grade}</span>
+                          <span>{product.category || product.grade}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <FiShoppingBag className="text-green-600" />
-                          <span>{product.quantity}</span>
+                          <span>{product.price || product.quantity}</span>
                         </div>
                         <div className="flex items-center gap-2">
                           <FiMapPin className="text-green-600" />
-                          <span>{product.location}</span>
+                          <span>{product.origin || product.location}</span>
                         </div>
                       </div>
                       <Link href={`/products/${product.id}`} className="mt-4 inline-flex items-center text-green-700 hover:text-green-900">
@@ -516,4 +298,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage; 
+export default LandingPage;
