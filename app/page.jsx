@@ -1,16 +1,41 @@
 "use client";
-import { useState } from 'react';
+import '../i18n';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { FiPhone, FiChevronRight, FiMapPin, FiShoppingBag, FiSun, FiDroplet, FiNavigation, FiX, FiSearch } from 'react-icons/fi';
 import ProductImage from '../components/ProductImage';
 import { foodItems } from '../assets/assets';
+import i18n from 'i18next';
+import { useTranslation } from 'react-i18next';
+
+const stateToLanguage = {
+  "Maharashtra": "mr",
+  "Punjab": "pa",
+  "Gujarat": "gu",
+  "West Bengal": "bn",
+  "Tamil Nadu": "ta",
+  "Karnataka": "kn",
+  "Uttar Pradesh": "hi",
+  // ...add more as needed
+};
 
 const LandingPage = () => {
+  const { t } = useTranslation();
   const [locationError, setLocationError] = useState('');
   const [isLocating, setIsLocating] = useState(false);
   const [detectedArea, setDetectedArea] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [filteredProducts, setFilteredProducts] = useState(foodItems);
+
+  useEffect(() => {
+    // Set initial language on component mount
+    if (navigator.language) {
+      const browserLanguage = navigator.language.substring(0, 2);
+      if (i18n.language !== browserLanguage) {
+        i18n.changeLanguage(browserLanguage);
+      }
+    }
+  }, []);
 
   // Get user's location
   const getLocation = () => {
@@ -33,15 +58,19 @@ const LandingPage = () => {
             const area = data[0].state || data[0].name;
             setDetectedArea(area);
             filterProductsByLocation(area);
+          } else {
+            setLocationError("Could not determine location from coordinates.");
           }
         } catch (error) {
           setLocationError('Could not detect your location');
+          console.error("Location detection error:", error);
         }
         setIsLocating(false);
       },
       (error) => {
         setLocationError('Please enable location access to see local products');
         setIsLocating(false);
+        console.error("Geolocation error:", error);
       }
     );
   };
@@ -52,6 +81,12 @@ const LandingPage = () => {
       product.origin && product.origin.toLowerCase().includes(area.toLowerCase())
     );
     setFilteredProducts(filtered);
+
+    // Set language based on detected area/state
+    const lang = stateToLanguage[area];
+    if (lang && i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+    }
   };
 
   const handleManualSearch = () => {
@@ -65,6 +100,9 @@ const LandingPage = () => {
     setFilteredProducts(foodItems);
     setDetectedArea('');
     setSearchQuery('');
+    if (i18n.language !== 'en') {
+      i18n.changeLanguage('en'); // Reset to default language
+    }
   };
 
   return (
@@ -75,9 +113,9 @@ const LandingPage = () => {
           <div className="flex items-center gap-2">
             <FiMapPin className="text-green-600" />
             {detectedArea ? (
-              <span className="font-medium">Showing products near {detectedArea}</span>
+              <span className="font-medium">{t('Showing products near')} {detectedArea}</span>
             ) : (
-              <span>Discover local produce in your area</span>
+              <span>{t('Discover local produce in your area')}</span>
             )}
           </div>
           <div className="flex gap-2">
@@ -92,7 +130,7 @@ const LandingPage = () => {
               onClick={handleManualSearch}
               className="bg-green-600 text-white px-4 py-2 rounded-lg"
             >
-              Search
+              {t('Search')}
             </button>
           </div>
           <button
@@ -101,7 +139,7 @@ const LandingPage = () => {
             className="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2 disabled:opacity-50"
           >
             <FiNavigation className="w-4 h-4" />
-            {isLocating ? 'Detecting...' : 'Use My Location'}
+            {isLocating ? 'Detecting...' : t('Use My Location')}
           </button>
         </div>
       </div>
@@ -141,10 +179,10 @@ const LandingPage = () => {
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
-                Connecting Farmers Directly with Buyers
+                {t('Connecting Farmers Directly with Buyers')}
               </h1>
               <p className="text-xl text-gray-600 mb-8">
-                Discover fresh produce straight from local farms
+                {t('Discover fresh produce straight from local farms')}
               </p>
               <div className="max-w-2xl mx-auto">
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -164,7 +202,7 @@ const LandingPage = () => {
                       className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-lg flex items-center gap-2 transition-colors"
                     >
                       <FiSearch className="w-5 h-5" />
-                      Search
+                      {t('Search')}
                     </button>
                     <button
                       onClick={getLocation}
@@ -172,14 +210,14 @@ const LandingPage = () => {
                       className="bg-green-100 hover:bg-green-200 text-green-700 px-6 py-3 rounded-lg flex items-center gap-2 transition-colors disabled:opacity-50"
                     >
                       <FiNavigation className="w-5 h-5" />
-                      {isLocating ? 'Detecting...' : 'Use My Location'}
+                      {isLocating ? 'Detecting...' : t('Use My Location')}
                     </button>
                   </div>
                 </div>
                 {detectedArea && (
                   <div className="mt-4 text-green-700 flex items-center justify-center gap-2">
                     <FiMapPin className="w-5 h-5" />
-                    Showing results for: {detectedArea}
+                    {t('Showing results for')}: {detectedArea}
                     <button 
                       onClick={clearFilters}
                       className="text-red-600 hover:text-red-700 ml-2"
@@ -197,25 +235,25 @@ const LandingPage = () => {
         <section className="py-16">
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-bold text-gray-900">Fresh Produce Available</h2>
+              <h2 className="text-3xl font-bold text-gray-900">{t('Fresh Produce Available')}</h2>
               {detectedArea && (
                 <button 
                   onClick={clearFilters}
                   className="text-green-600 hover:text-green-800 flex items-center gap-2"
                 >
-                  <span>Clear Filters</span>
+                  <span>{t('Clear Filters')}</span>
                   <FiX className="w-4 h-4" />
                 </button>
               )}
             </div>
             {filteredProducts.length === 0 ? (
               <div className="text-center py-12">
-                <div className="text-gray-500 mb-4">No products found in {detectedArea}</div>
+                <div className="text-gray-500 mb-4">{t('No products found in')} {detectedArea}</div>
                 <button
                   onClick={clearFilters}
                   className="bg-green-600 text-white px-4 py-2 rounded-lg"
                 >
-                  Show All Products
+                  {t('Show All Products')}
                 </button>
               </div>
             ) : (
@@ -243,7 +281,7 @@ const LandingPage = () => {
                         </div>
                       </div>
                       <Link href={`/products/${product.id}`} className="mt-4 inline-flex items-center text-green-700 hover:text-green-900">
-                        <span>Contact Seller</span>
+                        <span>{t('Contact Seller')}</span>
                         <FiChevronRight className="ml-1" />
                       </Link>
                     </div>
@@ -261,25 +299,25 @@ const LandingPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <h3 className="text-lg font-semibold mb-4">AgriConnect</h3>
-              <p className="text-gray-400">Connecting farmers and buyers directly since 2023</p>
+              <p className="text-gray-400">{t('Connecting farmers and buyers directly since 2023')}</p>
             </div>
             <div>
-              <h4 className="text-sm font-semibold uppercase mb-4">Quick Links</h4>
+              <h4 className="text-sm font-semibold uppercase mb-4">{t('Quick Links')}</h4>
               <ul className="space-y-2">
-                <li><Link href="/about" className="text-gray-400 hover:text-white">About Us</Link></li>
-                <li><Link href="/contact" className="text-gray-400 hover:text-white">Contact</Link></li>
-                <li><Link href="/faq" className="text-gray-400 hover:text-white">FAQ</Link></li>
+                <li><Link href="/about" className="text-gray-400 hover:text-white">{t('About Us')}</Link></li>
+                <li><Link href="/contact" className="text-gray-400 hover:text-white">{t('Contact')}</Link></li>
+                <li><Link href="/faq" className="text-gray-400 hover:text-white">{t('FAQ')}</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-semibold uppercase mb-4">Legal</h4>
+              <h4 className="text-sm font-semibold uppercase mb-4">{t('Legal')}</h4>
               <ul className="space-y-2">
-                <li><Link href="/privacy" className="text-gray-400 hover:text-white">Privacy Policy</Link></li>
-                <li><Link href="/terms" className="text-gray-400 hover:text-white">Terms of Service</Link></li>
+                <li><Link href="/privacy" className="text-gray-400 hover:text-white">{t('Privacy Policy')}</Link></li>
+                <li><Link href="/terms" className="text-gray-400 hover:text-white">{t('Terms of Service')}</Link></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-semibold uppercase mb-4">Connect</h4>
+              <h4 className="text-sm font-semibold uppercase mb-4">{t('Connect')}</h4>
               <div className="flex space-x-4">
                 <Link href="#" className="text-gray-400 hover:text-white">
                   <span className="sr-only">Facebook</span>
