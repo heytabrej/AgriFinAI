@@ -1,6 +1,6 @@
-const banks = [
+export const banks = [
   {
-    id: 9,
+    id: 1,
     name: "Capital One Agri-Finance",
     logo: 'https://bsmedia.business-standard.com/_media/bs/img/article/2024-04/17/full/1713358297-077.jpg',
     description: "Data-driven financing and digital tools for modern farmers.",
@@ -30,7 +30,7 @@ const banks = [
     ]
   },
   {
-    id: 1,
+    id: 2,
     name: "SBI Kisan Credit",
     logo: 'https://wordzz.com/wp-content/uploads/2016/10/sbi.jpg',
     description: "Government-backed agricultural loans with PM-KISAN subsidies",
@@ -60,7 +60,7 @@ const banks = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     name: "NABARD Rural Boost",
     logo: 'https://www.ux4g.gov.in/assets/img/uxdt-logo/NABARD-Preview.png',
     description: "Long-term financing for agricultural development",
@@ -81,7 +81,7 @@ const banks = [
     ]
   },
   {
-    id: 3,
+    id: 4,
     name: "HDFC Agri Growth",
     logo: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSquouX3qJzp6uZwleCOtTBppHfDKlN6vDHg&s',
     description: "Quick digital loans for progressive farmers",
@@ -102,7 +102,7 @@ const banks = [
     ]
   },
   {
-    id: 4,
+    id: 5,
     name: "ICICI Krishi Suraksha",
     logo: 'https://static.vecteezy.com/system/resources/previews/020/336/263/non_2x/icici-logo-icici-icon-free-free-vector.jpg',
     description: "Comprehensive farm protection loans",
@@ -123,8 +123,8 @@ const banks = [
     ]
   },
   {
-    id: 5,
-    name: "Axis Farm Solutions",
+    id: 6,
+    name: "Axis Agri Advantage",
     logo: 'https://i.pinimg.com/736x/c2/ce/15/c2ce15a98bfd986916476d5bc5610eb0.jpg',
     description: "End-to-end agricultural financing",
     minInterest: 8.2,
@@ -144,8 +144,8 @@ const banks = [
     ]
   },
   {
-    id: 6,
-    name: "Bandhan Microfinance",
+    id: 7,
+    name: "Bandhan Agri Loans",
     logo: 'https://i.pinimg.com/736x/9a/b4/f2/9ab4f2ffacecc3b687b3bdd4eb337772.jpg',
     description: "Group lending for small farmers",
     minInterest: 10,
@@ -161,27 +161,6 @@ const banks = [
         interest: "12%",
         features: ["Group guarantee", "Weekly repayment"],
         documents: ["Aadhaar", "Group members list"]
-      }
-    ]
-  },
-  {
-    id: 7,
-    name: "Punjab National Bank",
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/3/3b/PNB_logo.svg',
-    description: "Subsidized loans under government schemes",
-    minInterest: 4.5,
-    maxInterest: 9.5,
-    rating: 4.3,
-    tags: ["Subsidy Linked", "KCC Cards"],
-    products: [
-      {
-        id: 1,
-        name: "PM-KISAN Loan",
-        amount: "Up to ₹3 Lakh",
-        tenure: "5 Years",
-        interest: "4.5%",
-        features: ["Interest subsidy", "Crop advisory"],
-        documents: ["Aadhaar", "Land record"]
       }
     ]
   },
