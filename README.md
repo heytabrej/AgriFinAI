@@ -61,7 +61,7 @@ AgriFinAI is a web-based platform that provides:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/heytabrej/AgriConnect.git
+   git clone https://github.com/heytabrej/AgriFinAI.git
    cd agri-app
    ```
 
