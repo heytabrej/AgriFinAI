@@ -114,7 +114,7 @@ agri-app/
 
 ## Deploy on Vercel
 
-Deploy your Next.js app easily using [Vercel](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme).
+Deploy your Next.js app easily using [Vercel](https://agri-fin-ai-git-main-heytabrejs-projects.vercel.app).
 
 
 ---
