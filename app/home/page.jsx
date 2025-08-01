@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from 'react-i18next';
 import { 
   FiMenu, FiX, FiSearch, FiUser, FiTruck, FiDollarSign, 
   FiMapPin, FiShoppingBag, FiMessageSquare, FiStar, FiPlus, FiMic 
@@ -82,6 +83,7 @@ function GeminiChatbot() {
 }
 
 const HomePage = () => {
+  const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
