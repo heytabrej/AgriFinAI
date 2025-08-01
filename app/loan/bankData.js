@@ -156,6 +156,36 @@ export const banks = [
     ]
   },
   {
+    id: 9,
+    name: "Capital One Agri-Finance",
+    logo: 'https://bsmedia.business-standard.com/_media/bs/img/article/2024-04/17/full/1713358297-077.jpg',
+    description: "Data-driven financing and digital tools for modern farmers.",
+    minInterest: 5.0,
+    maxInterest: 10.5,
+    rating: 4.9,
+    tags: ["Fintech", "Data-Driven", "Digital Tools"],
+    products: [
+      {
+        id: 1,
+        name: "Smart Agri-Loan",
+        amount: "Up to ₹15 Lakh",
+        tenure: "5 Years",
+        interest: "7.2%",
+        features: ["Real-time analytics dashboard", "Automated credit scoring", "Mobile-first platform"],
+        documents: ["Digital land records", "Bank statement analysis"]
+      },
+      {
+        id: 2,
+        name: "Supply Chain Finance",
+        amount: "Up to ₹1 Crore",
+        tenure: "1 Year",
+        interest: "8.0%",
+        features: ["Invoice discounting", "Real-time tracking", "Buyer-supplier network"],
+        documents: ["Business registration", "Supply contracts"]
+      }
+    ]
+  },
+  {
     id: 8,
     name: "Bharat Microfinance",
     logo: 'https://www.bharatfinancial.com/images/logo.png',

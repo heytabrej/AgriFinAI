@@ -1,9 +1,14 @@
 import { banks } from "../../../../loan/bankData";
 import LoanApplicationForm from "../../../../loan/LoanApplicationForm";
+import Link from "next/link";
 
 const LoanApplicationPage = ({ params }) => {
   const bank = banks.find(b => b.id === Number(params.bankId));
-  const loan = bank.products.find(p => p.id === Number(params.loanId));
+  const loan = bank?.products.find(p => p.id === Number(params.loanId));
+
+  if (!bank || !loan) {
+    return <div className="text-center py-20">Loan product not found.</div>;
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -18,7 +23,7 @@ const LoanApplicationPage = ({ params }) => {
           </div>
           
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-green-50 p-4 rounded-xl">
+            <div className="bg-green-50 p-4 rounded-xl border border-green-200">
               <h3 className="text-sm font-semibold text-green-800 mb-2">Loan Details</h3>
               <div className="space-y-1 text-sm">
                 <p><span className="font-medium">Amount:</span> {loan.amount}</p>
@@ -27,7 +32,7 @@ const LoanApplicationPage = ({ params }) => {
               </div>
             </div>
             
-            <div className="bg-blue-50 p-4 rounded-xl">
+            <div className="bg-blue-50 p-4 rounded-xl border border-blue-200">
               <h3 className="text-sm font-semibold text-blue-800 mb-2">Required Documents</h3>
               <ul className="list-disc list-inside text-sm">
                 {loan.documents.map((doc) => (
@@ -48,4 +53,4 @@ const LoanApplicationPage = ({ params }) => {
   );
 };
 
-export default LoanApplicationPage; 
+export default LoanApplicationPage;
