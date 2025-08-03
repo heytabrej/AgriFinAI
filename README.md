@@ -4,7 +4,7 @@ AgriFinAI is an innovative, AI-powered platform designed to transform Indian agr
 
 ---
 
-## Why AgriFinAI ?
+## Why AgriFinAI?
 
 ### Problem Statement
 
@@ -56,27 +56,29 @@ AgriFinAI is a web-based platform that provides:
 ### Prerequisites
 - Node.js (v16 or later)
 - Gemini API Key (Google Generative Language)
+- OpenWeather API Key (for weather features)
 
 ### Installation
 
-1. Clone the repository:
+1. **Clone the repository:**
    ```bash
    git clone https://github.com/heytabrej/AgriFinAI.git
    cd agri-app
    ```
 
-2. Install dependencies:
+2. **Install dependencies:**
    ```bash
    npm install
    ```
 
-3. Create a `.env.local` file in the root directory and configure the required environment variables:
+3. **Configure environment variables:**
+   Create a `.env.local` file in the root directory and add:
    ```env
    NEXT_PUBLIC_GEMINI_API_KEY=your-gemini-api-key
    NEXT_PUBLIC_OPENWEATHER_API_KEY=your-openweather-api-key
    ```
 
-4. Run the development server:
+4. **Run the development server:**
    ```bash
    npm run dev
    ```
@@ -105,17 +107,17 @@ agri-app/
 ## Usage Guide
 
 - **AI Chatbot**: Click the chat button at the bottom-right of any page. Ask questions about crops, weather, loans, or soil health. Optionally, detect your location for more accurate advice.
-- **Loan Marketplace**: Browse and compare loan products, view required documents, and apply directly.
-- **Weather & Crop Advisory**: Enter your location to receive AI-powered crop plans and weather insights.
-- **Soil Health Analysis**: Submit crop and soil details for instant AI assessment.
+- **Loan Marketplace**: Browse and compare loan products, view required documents, and apply directly from the platform.
+- **Weather & Crop Advisory**: Enter your location to receive AI-powered crop plans and weather insights tailored to your region.
+- **Soil Health Analysis**: Submit crop and soil details for instant AI assessment and recommendations.
 - **Language Selection**: Use the language switcher to interact in your preferred language.
 
 ---
 
-## Deploy on Vercel
+## Deployment
 
-Deploy your Next.js app easily using [Vercel](https://agri-fin-ai-git-main-heytabrejs-projects.vercel.app).
-
+Deploy your Next.js app easily using [Vercel](https://vercel.com/).  
+Live demo: [AgriFinAI on Vercel](https://agri-fin-ai-git-main-heytabrejs-projects.vercel.app)
 
 ---
 
