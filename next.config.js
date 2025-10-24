@@ -31,7 +31,8 @@ module.exports = {
       'upload.wikimedia.org',
       'www.nabard.org',
       'www.bandhanbank.com',
-      'www.bharatfinancial.com'
+      'www.bharatfinancial.com',
+      'media.licdn.com'
     ],
   },
 };
