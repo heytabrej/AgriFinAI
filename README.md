@@ -1,56 +1,53 @@
-# Agri-App
+# AgriFinAI
 
-Agri-App is a comprehensive platform designed to empower Indian farmers by addressing key challenges in agriculture. By leveraging modern technology, the app provides solutions for fair market access, weather predictions, logistics, financial inclusion, and personalized crop advisories. This project integrates design thinking principles to create a user-centric platform that improves productivity, profitability, and sustainability for farmers.
-
----
-
-## Why This Project Exists
-
-### Our Problem Statement
-Indian farmers face a cycle of uncertainty and financial instability due to four key challenges:
-
-1. **Lack of Fair Market Access**: Farmers often sell their produce through middlemen who offer unfair prices, reducing their profit margins.
-2. **Unpredictable Weather and Natural Disasters**: Erratic weather patterns and inadequate forecasts lead to poor decision-making in planting, irrigation, and harvesting.
-3. **Access to Human Labor and Farm Machinery**: Delays in procuring labor or equipment during critical farming phases directly impact productivity.
-4. **Limited Resources**: Farmers lack access to personalized crop advisories, efficient logistics support, and information about government schemes and policies.
-
-These interconnected challenges create a vicious cycle, leaving farmers vulnerable and unable to maximize their productivity and profitability, which in turn affects the nation's food security.
+AgriFinAI is an innovative, AI-powered platform designed to transform Indian agriculture by integrating financial intelligence, crop advisory, and hyperlocal insights. Built for the Capital One Launchpad Hackathon, this solution leverages agentic AI to empower farmers, financiers, vendors, and all stakeholders with actionable, reliable, and accessible information—bridging the gap between technology and grassroots impact.
 
 ---
 
-## Our Approach
+## Why AgriFinAI ?
 
-### Design Thinking Process
-We adopted the **Design Thinking Process** to create a user-centric solution:
+### Problem Statement
 
-1. **Empathize**: Understand the challenges faced by farmers through sponsor interactions, persona creation, and journey mapping.
-2. **Define**: Identify core problems such as fair market access, weather management, logistics, and financial inclusion.
-3. **Ideate**: Brainstorm over 100 potential solutions and prioritize them based on feasibility, impact, and innovation.
-4. **Prototype**: Develop low-fidelity prototypes and scalable system architecture.
-5. **Test**: Validate the solution with real-world users and refine based on feedback.
+Indian agriculture faces persistent challenges:
+- **Unpredictable Weather & Climate Risks**: Farmers struggle to make timely decisions due to erratic weather and lack of localized forecasts.
+- **Limited Financial Access**: Many farmers lack access to affordable credit, insurance, and government schemes.
+- **Fragmented Market Access**: Middlemen and lack of transparency reduce farmer profits.
+- **Data & Knowledge Gaps**: Farmers need personalized, multilingual, and context-aware advice for crops, soil, and finance.
+
+AgriFinAI addresses these by combining AI-driven recommendations, financial inclusion, and real-time, multilingual support.
+
+---
+
+## Solution Overview
+
+AgriFinAI is a web-based platform that provides:
+- **Agentic AI Chatbot**: Real-time, conversational assistant for crop, weather, soil, and finance queries, powered by Gemini API and grounded in public datasets.
+- **Financial Marketplace**: Compare and apply for loans from leading banks, including Capital One Agri-Finance, with transparent terms and document support.
+- **Weather & Crop Advisory**: Hyperlocal weather forecasts and actionable crop plans, leveraging AI for reliability and explainability.
+- **Soil Health Analysis**: AI-powered soil and crop health assessment for better yield and sustainability.
+- **Direct Market Access**: Connects farmers directly with buyers, improving transparency and pricing.
+- **Multilingual Accessibility**: Supports multiple Indian languages for inclusivity.
 
 ---
 
 ## Key Features
 
-- **Fair Market Access**: Connects farmers directly with retailers to eliminate middlemen and ensure better pricing.
-- **Weather Insights**: Provides real-time weather forecasts and disaster alerts to help farmers make informed decisions.
-- **Logistics Support**: Offers tools for efficient transportation and storage of produce.
-- **Financial Inclusion**: Enables access to credit, subsidies, and insurance through a streamlined process.
-- **Personalized Crop Advisories**: AI-driven recommendations for crop selection, pest control, and irrigation planning.
-- **Multi-Language Support**: Ensures accessibility for farmers with varying literacy levels by providing regional language options.
+- **AI Chatbot (Gemini-powered)**: Floating chat button on every page, providing instant, context-aware answers in 100–150 words, formatted for clarity and reliability.
+- **Location Detection**: Enhances recommendations by using user’s location for weather, crop, and financial advice.
+- **Financial Inclusion**: Access to loans, subsidies, and insurance from multiple banks, including Capital One.
+- **Personalized Crop & Soil Advisory**: AI-driven recommendations tailored to local conditions and user queries.
+- **Multi-Language Support**: i18n integration for Hindi, Marathi, Tamil, Kannada, Gujarati, and more.
+- **Modern UI/UX**: Responsive, accessible, and visually appealing design for all user types.
+- **Explainability & Trust**: All AI responses cite sources and explain reasoning for reliability.
 
 ---
 
 ## Technologies Used
 
-- **Frontend**: React, TailwindCSS, Material Tailwind
-- **Backend**: Next.js API routes
-- **Database**: MongoDB
-- **Cloud Services**: AWS S3 for storage
-- **PDF Viewer**: `@react-pdf-viewer` for document viewing
+- **Frontend**: React, Next.js (App Router), TailwindCSS, Material Tailwind
+- **AI Integration**: Gemini API (Google Generative Language)
+- **Localization**: i18next for multilingual support
 - **Icons**: Heroicons, React Icons, Iconify
-- **AI Integration**: AI-driven insights for crop recommendations and pest control
 
 ---
 
@@ -58,54 +55,32 @@ We adopted the **Design Thinking Process** to create a user-centric solution:
 
 ### Prerequisites
 - Node.js (v16 or later)
-- MongoDB instance
-- AWS credentials for S3 integration
+- Gemini API Key (Google Generative Language)
 
 ### Installation
 
 1. Clone the repository:
-
    ```bash
-   git clone https://github.com/your-username/agri-app.git
+   git clone https://github.com/heytabrej/AgriFinAI.git
    cd agri-app
    ```
 
 2. Install dependencies:
-
    ```bash
    npm install
    ```
 
-3. Create a `.env.local` file in the root directory and configure the required environment variables (see [Environment Variables](#environment-variables)).
+3. Create a `.env.local` file in the root directory and configure the required environment variables:
+   ```env
+   NEXT_PUBLIC_GEMINI_API_KEY=your-gemini-api-key
+   NEXT_PUBLIC_OPENWEATHER_API_KEY=your-openweather-api-key
+   ```
 
 4. Run the development server:
-
    ```bash
    npm run dev
    ```
-
-   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
----
-
-## Environment Variables
-
-The project requires the following environment variables to be set in a `.env.local` file:
-
-```env
-# MongoDB connection string
-MONGODB_URI=your-mongodb-uri
-
-# AWS S3 credentials
-AWS_ACCESS_KEY_ID=your-access-key-id
-AWS_SECRET_ACCESS_KEY=your-secret-access-key
-AWS_REGION=your-region
-AWS_BUCKET_NAME=your-bucket-name
-
-# NextAuth secret
-NEXTAUTH_SECRET=your-nextauth-secret
-NEXTAUTH_URL=http://localhost:3000
-```
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
@@ -119,7 +94,7 @@ agri-app/
 ├── components/         # Reusable components
 ├── lib/                # Utility functions and helpers
 ├── pages/              # Next.js pages
-├── api/                # API routes
+├── api/                # API routes (if needed)
 ├── .env.local          # Environment variables
 ├── package.json        # Project dependencies and scripts
 └── README.md           # Project documentation
@@ -127,48 +102,22 @@ agri-app/
 
 ---
 
-## Scripts
+## Usage Guide
 
-The following scripts are available in the project:
-
-- `npm run dev`: Starts the development server.
-- `npm run build`: Builds the application for production.
-- `npm run start`: Starts the production server.
-- `npm run lint`: Runs ESLint to check for code quality issues.
-
----
-
-## Personas and Stakeholders
-
-### Personas
-- **Small-Scale Farmer**: Ramesh Kumar
-- **Large-Scale Farmer**: Vikram Patel
-- **Retail Business Owner**: Anita Sharma
-- **Logistics Provider**: Rajesh Gupta
-- **Microfinance Officer**: Pooja Verma
-
-### Stakeholders
-- Government schemes
-- Agricultural ministries
-- Farm cooperatives
-- Retail buyers
-- Agri-universities
-
----
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - Learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - Interactive Next.js tutorial.
-
-You can also check out [the Next.js GitHub repository](https://github.com/vercel/next.js) for feedback and contributions.
+- **AI Chatbot**: Click the chat button at the bottom-right of any page. Ask questions about crops, weather, loans, or soil health. Optionally, detect your location for more accurate advice.
+- **Loan Marketplace**: Browse and compare loan products, view required documents, and apply directly.
+- **Weather & Crop Advisory**: Enter your location to receive AI-powered crop plans and weather insights.
+- **Soil Health Analysis**: Submit crop and soil details for instant AI assessment.
+- **Language Selection**: Use the language switcher to interact in your preferred language.
 
 ---
 
 ## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Deploy your Next.js app easily using [Vercel](https://agri-fin-ai-git-main-heytabrejs-projects.vercel.app).
 
-Check out the [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+---
+
+**AgriFinAI Advisor**  
+Empowering Indian agriculture with AI-powered financial and crop advisory solutions.
