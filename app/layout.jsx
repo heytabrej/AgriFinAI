@@ -1,18 +1,19 @@
 import './globals.css';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
+import GeminiChatbot from "./components/GeminiChatbot";
+
 
 export const metadata = {
-  title: 'AgriConnect',
-  description: 'Connecting farmers directly with buyers',
+  title: 'AgriFinAI',
+  description: 'Empowering Indian agriculture with AI-powered financial and crop advisory solutions.',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-green-50">
+      <body className="bg-gray-50 text-gray-800 antialiased">
         {children}
+        <GeminiChatbot />
       </body>
     </html>
   );
-} 
+}

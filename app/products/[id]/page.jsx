@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { FiArrowLeft, FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
 import Link from 'next/link';
+import Image from 'next/image';
 
 const ProductDetailsPage = ({ params }) => {
   const [showNumber, setShowNumber] = useState(false);
@@ -42,10 +43,13 @@ const ProductDetailsPage = ({ params }) => {
 
         <div className="bg-white rounded-2xl p-6 shadow-lg">
           <div className="grid gap-8 md:grid-cols-2">
-            <img 
-              src={product.image} 
+            <Image
+              src={product.image}
               alt={product.name}
+              width={400}
+              height={256}
               className="w-full h-64 object-cover rounded-xl"
+              onError={(e) => { e.target.src = '/fallback-product.jpg'; }}
             />
             
             <div className="space-y-4">
@@ -178,4 +182,4 @@ const ProductDetailsPage = ({ params }) => {
   );
 };
 
-export default ProductDetailsPage; 
+export default ProductDetailsPage;

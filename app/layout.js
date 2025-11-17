@@ -1,5 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Agri App",
-  description: "A platform for the agri products",
+  title: "AgriFinAI",
+  description: "Empowering Indian agriculture with AI-powered financial and crop advisory solutions.",
 };
 
 export default function RootLayout({ children }) {
@@ -22,6 +23,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <Link href="/" className="text-2xl font-bold text-green-700 flex items-center gap-2">
+          AgriFinAI Advisor
+        </Link>
         {children}
       </body>
     </html>
